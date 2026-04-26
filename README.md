@@ -1,34 +1,121 @@
-# 🛍️ ShopEase: Customer Sentiment Analysis System
+# 🛍️ ShopEase Sentiment Analysis System
 
 ## 📖 Project Overview
-This project is an end-to-end Machine Learning pipeline that automatically classifies customer feedback into **Positive**, **Neutral**, or **Negative** sentiments, allowing the business to quickly identify areas for product and service improvements.
 
-## 🚀 How to Run the Application
-1. Install dependencies: `pip install -r requirements.txt`
-2. Download NLP model: `python -m spacy download en_core_web_sm`
-3. Start the API: `cd api && uvicorn main:app --reload`
-4. Start the UI: `cd ui && streamlit run app.py`
+This project is an end-to-end Machine Learning application that analyzes customer reviews and classifies them into sentiments such as **Positive, Neutral, or Negative**.
 
-## 🐳 Docker Deployment
-This application is fully containerized. You can pull and run the backend API from anywhere using Docker.
+The system is designed to simulate a real-world production pipeline where a trained model is tracked, deployed, and consumed through an API and user interface.
 
-**1. Pull the image from Docker Hub:**
-`docker pull nazeeb3776/shopease-api:latest`
+---
 
-**2. Run the container:**
-`docker run -p 8000:8000 nazeeb3776/shopease-api:latest`
+## 🚀 Features
 
-The API will instantly be available at `http://localhost:8000`.
+* Real-time sentiment prediction
+* Batch analysis via CSV upload
+* MLflow model tracking using DagsHub
+* REST API built with FastAPI
+* Interactive UI using Streamlit
+* Transformer-based NLP model (DistilBERT)
+
+---
 
 ## 🏗️ System Architecture
-This project implements a decoupled, microservices-style architecture:
-* **Frontend:** Streamlit provides an intuitive web interface for customer service reps to input text or upload batch CSV files.
-* **Backend:** FastAPI serves the machine learning model via RESTful endpoints (`/predict`).
-* **Machine Learning:** `scikit-learn` and `spaCy` process text and predict sentiment using a trained Logistic Regression model and TF-IDF vectorization.
-* **Deployment:** The backend is fully containerized using **Docker**, ensuring consistency across development and production environments.
+
+```text
+Streamlit UI → FastAPI → MLflow (DagsHub) → Model → Prediction
+```
+
+### Components:
+
+* **Frontend:** Streamlit interface for entering reviews and uploading datasets
+* **Backend:** FastAPI serving predictions through `/predict` endpoint
+* **Model Tracking:** MLflow integrated with DagsHub for versioning and experiment tracking
+* **Model:** Transformer-based sentiment model (DistilBERT)
+
+---
+
+## ⚙️ How to Run the Application
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/nazeebullah/ShopEase-Sentiment-Analysis.git
+cd ShopEase-Sentiment-Analysis
+```
+
+### 2. Create virtual environment
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install fastapi uvicorn streamlit mlflow dagshub transformers torch pandas requests
+```
+
+---
+
+### 4. Run FastAPI backend
+
+```bash
+python -m uvicorn myapi.main:app --reload
+```
+
+---
+
+### 5. Run Streamlit UI (new terminal)
+
+```bash
+streamlit run ui/streamlit_app.py
+```
+
+---
+
+## 🌐 Access the Application
+
+* API Docs: http://127.0.0.1:8000/docs
+* UI: http://localhost:8501
+
+---
+
+## 📊 Example Output
+
+Input:
+
+```
+This product is amazing
+```
+
+Output:
+
+```
+Positive (confidence ~0.99)
+```
+
+---
 
 ## 💼 Business Impact
-By deploying the ShopEase Sentiment Analysis System, the business achieves:
-1. **Automated Triage:** Thousands of daily reviews are instantly categorized without manual human reading.
-2. **Rapid Issue Resolution:** Negative feedback is immediately flagged, allowing customer service to prioritize dissatisfied customers and prevent churn.
-3. **Data-Driven Product Improvement:** Aggregated sentiment data provides the product team with quantifiable metrics on how new releases are received by the market.
+
+* **Automated Feedback Analysis:** Instantly classify thousands of customer reviews
+* **Improved Customer Experience:** Quickly identify negative sentiment and respond faster
+* **Data-Driven Decisions:** Helps businesses understand customer perception at scale
+
+---
+
+## 🧠 Tech Stack
+
+* Python
+* FastAPI
+* Streamlit
+* MLflow
+* DagsHub
+* HuggingFace Transformers
+
+---
+
+## 📌 Author
+
+**Nazeeb Ullah**
