@@ -20,10 +20,6 @@ app = FastAPI()
 class TextRequest(BaseModel):
     text: str
 
-@app.get("/")
-def home():
-    return {"message": "API working with MLflow"}
-
 @app.post("/predict")
 def predict(request: TextRequest):
     text = request.text
