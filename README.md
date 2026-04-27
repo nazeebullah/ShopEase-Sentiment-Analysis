@@ -1,10 +1,10 @@
 # 🛍️ ShopEase Sentiment Analysis System
-
+## 🚀 End-to-End Sentiment Analysis System using MLflow, FastAPI & Streamlit
 ## 📖 Project Overview
 
 This project is an end-to-end Machine Learning application that analyzes customer reviews and classifies them into sentiments such as **Positive, Neutral, or Negative**.
 
-The system is designed to simulate a real-world production pipeline where a trained model is tracked, deployed, and consumed through an API and user interface.
+The system is designed to implements a real-world production-style pipeline where a trained model is tracked, deployed, and consumed through an API and user interface.
 
 ---
 
@@ -53,7 +53,8 @@ venv\Scripts\activate
 ### 3. Install dependencies
 
 ```bash
-pip install fastapi uvicorn streamlit mlflow dagshub transformers torch pandas requests
+### Install dependencies
+pip install -r requirements.txt
 ```
 
 ---
@@ -113,6 +114,11 @@ Positive (confidence ~0.99)
 * MLflow
 * DagsHub
 * HuggingFace Transformers
+
+## 🚀 Future Improvements
+- Deploy application on cloud (Render / AWS)
+- Add real-time dashboard for sentiment trends
+- Improve model performance with fine-tuning
 
 ---
 
